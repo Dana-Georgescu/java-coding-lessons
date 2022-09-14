@@ -1,8 +1,8 @@
 package com.coding.lesson1;
 
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 /**
  *  @An array A consisting of N integers is given. The dominator of array A is the value that occurs in more than half of the elements of A.
@@ -35,11 +35,36 @@ import java.util.Map;
 
 public class Dominator {
 
-    public int solution(int[] A){
+    public static int solution(int[] array) {
 
+        Map<Integer, Integer> numberCounterMap = new HashMap<>();
+        Map<Integer, Integer> indexPositionMap = new HashMap<>();
+
+        if(array.length == 1 || array[0] == array[1]) {
+            return array[0];
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            int currentNumber = array[i];
+            if (!numberCounterMap.containsKey(currentNumber)) {
+                numberCounterMap.put(currentNumber, 1);
+                indexPositionMap.put(currentNumber, i);
+            }
+            else {
+                numberCounterMap.put(currentNumber, numberCounterMap.get(currentNumber) + 1);
+                if(numberCounterMap.get(currentNumber) > array.length / 2){
+                    return indexPositionMap.get(currentNumber);
+                }
+            }
+        }
         return -1;
 
+        //WRONG ANSWER, got -1, but dominator exists, for example on position 0
     }
 
+    public static void main(String[] args) {
+        int [] arr = new int[]{1,1,1,2,2,2,8,8,8,8,8,8,8,8,9};
+        System.out.println(solution(arr));
+    }
 
 }

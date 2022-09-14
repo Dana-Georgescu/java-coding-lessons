@@ -36,9 +36,19 @@ public class MissingElementTest {
         }
        // +  100000, 100001
 
-        // * N is an integer within the range [0..100,000]; // 100001
+        // * numberOfIntegers is an integer within the range [0..100,000]; // 100001
         // * the elements of A are all distinct;
         //* each element of array A is an integer within the range [1..(N + 1)]. [1...100001]
+        System.out.println("bubu");
+        System.out.println(("number of integers in the array    " + A.length));
+        System.out.println(A[0]);
+        System.out.println(A[1]);
+        System.out.println(A[2]);
+        System.out.println(A[99997]);
+        System.out.println(A[99998]);
+        System.out.println(A[99999]);
+        System.out.println("rubu");
+
         assertEquals(100000, missingElement.solution(A));
     }
 
@@ -130,7 +140,7 @@ public class MissingElementTest {
 
     @Test
     public void solutionTest23() {
-        int A[] = new int[]{3,5,1,2,4,7,9,10};
+        int A[] = new int[]{3,5,1,2,4,7,9, 8,10};
         assertEquals(6, missingElement.solution(A));
     }
 
@@ -159,6 +169,13 @@ public class MissingElementTest {
         int A[] = new int[99999];
         for (int i = 99998; i >= 1; i --)
             A[i] = i + 2;
+        System.out.println("cucu");
+        System.out.println(A[0]);
+        System.out.println(A[1]);
+        System.out.println(A[2]);
+        System.out.println(A[99997]);
+        System.out.println(A[99998]);
+        System.out.println("mimi");
         assertEquals(1, missingElement.solution(A));
     }
 
